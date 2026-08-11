@@ -1,0 +1,61 @@
+@use "variables" as *;
+
+// ================================================================
+// MIXINS / 共通ミックスイン
+// ================================================================
+
+// ---- レスポンシブブレイクポイント --------------------------------
+// 使い方: @include mq(tab) { ... }
+//   sp   : 〜767px（スマホ）
+//   tab  : 768px〜（タブレット以上）
+//   pc   : 1024px〜（PC以上）
+//   wide : 1280px〜（大画面）
+@mixin mq($breakpoint: tab) {
+  @if $breakpoint == sp {
+    @media screen and (max-width: 47.9375rem) {
+      @content;
+    }
+  } @else if $breakpoint == tab {
+    @media screen and (min-width: 48em) {
+      @content;
+    }
+  } @else if $breakpoint == pc {
+    @media screen and (min-width: 64em) {
+      @content;
+    }
+  } @else if $breakpoint == wide {
+    @media screen and (min-width: 80em) {
+      @content;
+    }
+  }
+}
+
+// ---- コンテンツ幅コンテナ ---------------------------------------
+@mixin layout-container {
+  width: $layout-width;
+  max-width: $layout-max-width;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// ---- 画像の中央トリミング（object-fit） --------------------------
+@mixin object-fit-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  font-family: "object-fit: cover;"; // IE用フォールバック指定（無害）
+}
+
+// ---- スクロール表示アニメーションの初期状態 ------------------------
+// js/main.js の IntersectionObserver が .is-inview を付与すると
+// _animations.scss 側で最終状態にトランジションする
+@mixin fade-in-up($delay: 0s) {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease $delay, transform 0.8s ease $delay;
+
+  &.is-inview {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

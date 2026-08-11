@@ -1,0 +1,51 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// NEWS (お知らせ) セクション
+// 対応HTML: index.html 内 <section class="news">
+// ※現在は静的なダミーデータです。更新頻度が上がってきたら
+//   ヘッドレスCMSやマークダウン管理への切り替えを検討してください。
+// ================================================================
+
+.news__list {
+  margin-top: 32px;
+  border-top: 1px solid $color-natural-border;
+}
+
+.news__item {
+  display: block;
+  border-bottom: 1px solid $color-natural-border;
+}
+
+.news__link {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 4px;
+
+  @include mq(tab) {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 22px 4px;
+  }
+}
+
+.news__date {
+  flex-shrink: 0;
+  color: $color-text-sub;
+  font-family: $font-number;
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+}
+
+.news__title {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.news__more {
+  margin-top: 28px;
+  text-align: center;
+}

@@ -1,0 +1,45 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// BANNER SIMPLE (小さめのお問い合わせ誘導バナー)
+// 対応HTML: index.html 内の複数箇所で使い回す .bannerSimple
+// CUBEの bl_bannerSimple（ページ中間に差し込む細長いCTA帯）に相当
+// ================================================================
+
+.bannerSimple {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 22px 20px;
+  background: $color-accent;
+  color: $color-white;
+  text-align: center;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.bannerSimple__icon {
+  width: 20px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.bannerSimple__en {
+  display: block;
+  font-family: $font-serif-en;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.bannerSimple__text {
+  display: block;
+  margin-top: 2px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}

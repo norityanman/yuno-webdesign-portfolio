@@ -1,0 +1,90 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// LEAD (大見出しステートメントセクション)
+// 対応HTML: index.html 内 <section class="lead">
+// CUBEの bl_indexLead（「大阪でホームページ制作をお考えの方へ」）に相当。
+// 見出し＋リード文＋背景の装飾テキストで構成。
+// ================================================================
+
+.lead {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 0;
+  background: $color-text;
+  color: $color-white;
+
+  @include mq(pc) {
+    padding: 110px 0;
+  }
+}
+
+// 背景に薄く浮かせる巨大な装飾英字（CUBEの js_indexLead_decoration 相当）
+.lead__decoration {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  z-index: 0;
+  color: rgba($color-white, 0.05);
+  font-family: $font-serif-en;
+  font-size: 10rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: right center;
+  pointer-events: none;
+
+  @include mq(pc) {
+    font-size: 16rem;
+  }
+}
+
+.lead__inner {
+  position: relative;
+  z-index: 1;
+  @include layout-container;
+}
+
+.lead__title {
+  font-family: $font-mincho;
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: center;
+  letter-spacing: 0.03em;
+
+  @include mq(pc) {
+    font-size: 3.2rem;
+  }
+
+  em {
+    font-style: normal;
+    color: $color-accent-light;
+  }
+}
+
+.lead__body {
+  max-width: 680px;
+  margin: 32px auto 0;
+
+  @include mq(pc) {
+    margin-top: 44px;
+  }
+}
+
+.lead__text {
+  font-size: 1.4rem;
+  line-height: 2;
+  letter-spacing: 0.03em;
+
+  + .lead__text {
+    margin-top: 20px;
+  }
+}
+
+.lead__buttons {
+  margin-top: 36px;
+  text-align: center;
+}

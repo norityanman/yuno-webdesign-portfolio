@@ -1,0 +1,161 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// ACTIVITY (その他の活動: SparkAI運営 / ReFastパートナー)
+// 対応HTML: index.html 内 <section class="activity" id="activity">
+// サイト全体のミント基調とは切り離し、SparkAI本家のブランドカラー
+// （ダーク背景 + オレンジ〜アンバーのグラデーション）を
+// カード内だけで再現し、埋め込みブランドとして視認性を持たせている。
+// ================================================================
+
+$spark-bg: #15171c;
+$spark-bg-soft: #1d2027;
+$spark-orange: #fb923c; // orange-400
+$spark-amber: #fbbf24; // amber-400
+
+.activity__card {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 24px;
+  background: $spark-bg;
+  color: $color-white;
+
+  @include mq(pc) {
+    padding: 60px 70px;
+  }
+}
+
+// 背景の淡いグロー装飾
+.activity__card::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba($spark-orange, 0.25), transparent 70%);
+  pointer-events: none;
+}
+
+.activity__head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.activity__logo {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.activity__wordmark {
+  font-family: $font-serif-en;
+  font-size: 2.2rem;
+  font-weight: 500;
+
+  span {
+    background: linear-gradient(90deg, $spark-orange, $spark-amber);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.activity__lead {
+  position: relative;
+  margin-top: 6px;
+  color: rgba($color-white, 0.6);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.activity__text {
+  position: relative;
+  margin-top: 20px;
+  max-width: 640px;
+  font-size: 1.4rem;
+  line-height: 1.9;
+  color: rgba($color-white, 0.85);
+}
+
+.activity__stats {
+  position: relative;
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+}
+
+.activity__stat-num {
+  font-family: $font-number;
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: $spark-amber;
+}
+
+.activity__stat-label {
+  margin-top: 2px;
+  font-size: 1.1rem;
+  color: rgba($color-white, 0.55);
+}
+
+.activity__button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding: 14px 26px;
+  border: 1px solid rgba($color-white, 0.35);
+  color: $color-white;
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: border-color 0.3s ease, background 0.3s ease;
+
+  &:hover {
+    background: rgba($color-white, 0.08);
+    border-color: $spark-amber;
+    opacity: 1;
+  }
+}
+
+// ---- パートナークレジット（株式会社ReFast） ----------------------------
+.activity__partner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid rgba($color-white, 0.14);
+}
+
+.activity__partner-label {
+  color: rgba($color-white, 0.5);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+
+.activity__partner-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.activity__partner-logo {
+  height: 22px;
+  width: auto;
+
+  @include mq(pc) {
+    height: 26px;
+  }
+}
+
+.activity__partner-name {
+  color: $color-white;
+  font-size: 1.3rem;
+  font-weight: 500;
+}

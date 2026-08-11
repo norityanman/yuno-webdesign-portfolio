@@ -1,0 +1,45 @@
+// ================================================================
+// VARIABLES / デザイントークン
+// サイト全体の色・フォント・余白・ブレイクポイントを一元管理する。
+// 配色や書体を変更したい場合は基本的にこのファイルだけ触ればOK。
+// ================================================================
+
+// ---- Colors : Base -------------------------------------------
+$color-white: #fff;
+$color-text: #333; // 本文カラー（CUBEサイトを踏襲した黒に近いグレー）
+$color-text-sub: #666;
+
+// ---- Colors : Accent（ミントグリーン × ナチュラル）-------------
+$color-accent: #4caf93; // メインアクセント（ボタン・リンク・見出し下線など）
+$color-accent-dark: #333; // ボタンhover時（CUBEに合わせて黒に近い色へ）
+$color-accent-light: #cdeee0; // 淡いミント（背景シェイプ・装飾用）
+$color-accent-pale: #eaf6f0; // さらに薄いミント（ボックス塗り用）
+
+$color-natural-bg: #f7f4ee; // ナチュラルなオフホワイト（セクション背景の切り替えに使用）
+$color-natural-border: #e6e2da; // ボーダー・区切り線
+
+$color-secondary: #6b7d5f; // セカンダリカラー（オリーブグリーン）数字・ラベル等
+$color-highlight-mustard: #e3b56c; // ワンポイント装飾色
+$color-highlight-terracotta: #e8927c; // ワンポイント装飾色
+
+// ---- Fonts ------------------------------------------------------
+// CUBEサイトと同じ組み合わせ方針：
+//   本文  = Noto Sans JP
+//   見出し = Shippori Mincho B1（明朝）
+//   英字ラベル(装飾) = Allura（Snell Roundhandの代替スクリプト体）
+//   英字ラベル(サブ) = Lora
+//   数字・電話番号等 = Roboto
+$font-jp: "Noto Sans JP", "Hiragino Sans", sans-serif;
+$font-mincho: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+$font-script: "Allura", cursive;
+$font-serif-en: "Lora", serif;
+$font-number: "Roboto", sans-serif;
+
+// ---- Layout -------------------------------------------------------
+$layout-width: 88%;
+$layout-max-width: 1200px;
+
+// ---- Z-index --------------------------------------------------
+$z-header: 100;
+$z-fixed-button: 90;
+$z-page-cover: 200;

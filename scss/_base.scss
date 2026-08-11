@@ -1,0 +1,275 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// BASE / 全体の基本スタイル・共通コンポーネント
+// ここに定義するクラスはサイト全体で使い回す共通パーツです。
+//   .l-container  … 幅88%・最大1200pxのコンテンツ幅コンテナ（CUBEの ly_layout 相当）
+//   .c-title      … 英字スクリプトラベル＋和文見出しのセクションタイトル（CUBEの el_title 相当）
+//   .c-btn        … 矢印アイコン付きボタン（CUBEの el_button 相当）
+//   .c-checklist  … チェックマーク付きリスト（CUBEの bl_listCheck 相当）
+//   .c-section    … セクションの上下余白＋背景切り替え
+// ================================================================
+
+html,
+body {
+  width: 100%;
+}
+
+body {
+  position: relative;
+  background: $color-white;
+  color: $color-text;
+  font-family: $font-jp;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.875;
+  overflow-wrap: break-word;
+  overflow-x: hidden; // 装飾シェイプがはみ出すため横スクロール防止
+}
+
+// メインコンテンツはヘッダー分だけ上に余白を取る（ヘッダーがfixedのため）
+.l-main {
+  padding-top: var(--header-height, 64px);
+
+  @include mq(pc) {
+    padding-top: 0; // PCはヘッダーが2段でmain visualが直下にくるため不要
+  }
+}
+
+a {
+  transition: opacity 0.3s ease, color 0.3s ease, background 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// スクリーンリーダー専用（視覚的に隠す）
+.u-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// レスポンシブ出し分け
+.u-pc-only {
+  display: none;
+  @include mq(pc) {
+    display: inline;
+  }
+}
+.u-sp-only {
+  @include mq(pc) {
+    display: none;
+  }
+}
+
+// ----------------------------------------------------------------
+// l-container : コンテンツ幅コンテナ
+// ----------------------------------------------------------------
+.l-container {
+  @include layout-container;
+}
+
+// ----------------------------------------------------------------
+// c-section : セクション共通の上下余白／背景バリエーション
+// ----------------------------------------------------------------
+.c-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+
+  @include mq(pc) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  // 自然な生成り色の背景に切り替えるセクション（CUBEの bl_backgroundColor__base 相当）
+  &--alt {
+    background: $color-natural-bg;
+  }
+
+  // 直前のセクションと詰めたいとき（LEAD直後のpagelinkなど）
+  &--tight-top {
+    padding-top: 0;
+  }
+}
+
+// ----------------------------------------------------------------
+// c-title : セクション見出し（英字スクリプト＋和文＋アンダーバー）
+// ----------------------------------------------------------------
+.c-title {
+  position: relative;
+  padding-bottom: 30px;
+  text-align: center;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    height: 20px;
+    background: $color-accent;
+    transform: translateX(-50%);
+  }
+}
+
+.c-title__en {
+  display: block;
+  margin-bottom: 4px;
+  color: $color-accent;
+  font-family: $font-script;
+  font-size: 3.6rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+
+  @include mq(pc) {
+    font-size: 4.6rem;
+  }
+}
+
+.c-title__ja {
+  display: block;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+
+  @include mq(tab) {
+    font-size: 2.4rem;
+  }
+  @include mq(pc) {
+    font-size: 2.6rem;
+  }
+}
+
+// 見出し直後の要素との間隔
+.c-title + * {
+  margin-top: 32px;
+  @include mq(pc) {
+    margin-top: 40px;
+  }
+}
+
+// ----------------------------------------------------------------
+// c-btn : 矢印アイコン付きボタン
+// ----------------------------------------------------------------
+.c-btn {
+  position: relative;
+  display: inline-block;
+  min-width: min(320px, 100%);
+  padding: 17px 50px 17px 24px;
+  background: $color-accent;
+  color: $color-white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.46;
+  text-align: center;
+  letter-spacing: 0.03em;
+  transition: background 0.4s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 20px;
+    height: 8px;
+    background: url("../assets/icons/arrow-right-white.svg") no-repeat center / contain;
+    transform: translateY(-50%);
+    transition: right 0.4s ease;
+  }
+
+  &:hover {
+    background: $color-accent-dark;
+    opacity: 1;
+
+    &::after {
+      right: 14px;
+    }
+  }
+
+  // 塗りの薄い版（サブボタン）
+  &--sub {
+    background: $color-white;
+    color: $color-accent;
+    border: 1px solid $color-accent;
+
+    &::after {
+      background-image: url("../assets/icons/arrow-right-accent.svg");
+    }
+
+    &:hover {
+      background: $color-accent;
+      color: $color-white;
+
+      &::after {
+        background-image: url("../assets/icons/arrow-right-white.svg");
+      }
+    }
+  }
+}
+
+.c-btn-wrap {
+  text-align: center;
+}
+
+// ----------------------------------------------------------------
+// c-checklist : チェックマーク付きリスト
+// ----------------------------------------------------------------
+.c-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: $color-accent-pale;
+}
+
+.c-checklist__item {
+  position: relative;
+  padding-left: 26px;
+  font-size: 1.4rem;
+  line-height: 1.5;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background: $color-accent url("../assets/icons/check-white.svg") no-repeat center / 10px;
+    border-radius: 50%;
+  }
+}
+
+// ----------------------------------------------------------------
+// c-lead : セクション直下のリード文
+// ----------------------------------------------------------------
+.c-lead {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: 0.03em;
+  line-height: 1.9;
+}
+
+// ----------------------------------------------------------------
+// c-tag : カテゴリタグ
+// ----------------------------------------------------------------
+.c-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: $color-white;
+  color: $color-accent;
+  border: 1px solid $color-accent;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}

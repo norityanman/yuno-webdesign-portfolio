@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>yuno webdesign｜想いをカタチにするホームページ制作</title>
+  <meta name="description" content="yuno webdesignは、個人事業主・小さな会社のためのホームページ制作を行っています。丁寧なヒアリングと、伝わるデザインでお客様の想いをカタチにします。">
+
+  <!-- ================================================================
+       WEB FONTS
+       CUBEサイトと同じ組み合わせ方針を踏襲：
+         本文= Noto Sans JP / 見出し= Shippori Mincho B1
+         数字= Roboto / 英字サブ= Lora
+         装飾スクリプト= Allura（CUBE本家の Snell Roundhand の代替）
+  ================================================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Lora:wght@500&family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@500&family=Shippori+Mincho+B1:wght@500;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================================================================
+       HEADER
+       ロゴ / グローバルナビ（SPはハンバーガーで開閉） / お問い合わせボタン
+       開閉制御: js/main.js 「HEADER: ハンバーガーメニュー開閉」
+  ================================================================= -->
+  <header class="header" id="js-header">
+    <div class="header__inner">
+      <p class="header__logo">
+        <a class="header__logo-link" href="#top">
+          <span class="header__logo-en"><span>yuno</span> webdesign</span>
+          <span class="header__logo-sub">Web Design &amp; Branding</span>
+        </a>
+      </p>
+
+      <button class="header__toggle" type="button" id="js-nav-toggle" aria-expanded="false" aria-controls="js-nav">
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+        <span class="u-sr-only">メニューを開閉する</span>
+      </button>
+
+      <nav class="header__nav" id="js-nav">
+        <ul class="header__nav-list">
+          <li><a class="header__nav-link js-nav-link" href="#top">HOME</a></li>
+          <li><a class="header__nav-link js-nav-link" href="#service">SERVICE</a></li>
+          <li><a class="header__nav-link js-nav-link" href="#works">WORKS</a></li>
+          <li><a class="header__nav-link js-nav-link" href="#about">ABOUT</a></li>
+          <li><a class="header__nav-link js-nav-link" href="#activity">ACTIVITY</a></li>
+          <li><a class="header__nav-link js-nav-link" href="#guide">GUIDE</a></li>
+          <li>
+            <a class="header__cta js-nav-link" href="#contact">
+              <img src="assets/icons/icon-mail.svg" alt="" width="15" height="12">
+              お問い合わせ
+            </a>
+          </li>
+        </ul>
+        <p class="header__nav-cta">
+          <a class="c-btn js-nav-link" href="#contact">お問い合わせ</a>
+        </p>
+      </nav>
+    </div>
+  </header>
+
+  <main class="l-main">
+
+    <!-- ================================================================
+         HERO (メインビジュアル)
+         キャッチコピー＋幾何学シェイプ＋人物写真(hero_photo.png)
+    ================================================================= -->
+    <section class="hero" id="top">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <p class="hero__label" aria-hidden="true">Feel &amp; Design</p>
+          <h1 class="hero__title">使う人の心に届く、<br>Webサイトを<em>つくる。</em></h1>
+          <p class="hero__text">
+            小さな想いやこだわりを、伝わるデザインとことばで。<br class="u-pc-only">
+            個人事業主・小さな会社のための、あたたかみのあるホームページ制作を行っています。
+          </p>
+          <div class="hero__buttons">
+            <a class="c-btn" href="#contact">お問い合わせはこちら</a>
+            <a class="c-btn c-btn--sub" href="#works">制作実績を見る</a>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hero__shape" aria-hidden="true"></div>
+          <svg class="hero__lines" viewBox="0 0 400 400" aria-hidden="true">
+            <path d="M40,120 L200,20 L360,120 L360,280 L200,380 L40,280 Z"/>
+            <path d="M10,150 L170,55" />
+            <path d="M390,250 L235,345" />
+          </svg>
+          <div class="hero__photo-wrap">
+            <img class="hero__photo" src="assets/images/hero_photo.png" alt="ノートPCを前に笑顔で話すyuno webdesignのイメージ写真" width="960" height="770">
+          </div>
+        </div>
+      </div>
+
+      <p class="hero__scroll" aria-hidden="true">Scroll</p>
+    </section>
+
+    <!-- ================================================================
+         WORKS (制作実績)
+         ピックアップ大カード1点 + グリッドカード
+         ※実績が増えたら .works__grid 内に .works__card を追加してください
+    ================================================================= -->
+    <section class="works c-section" id="works">
+      <div class="l-container">
+        <div class="works__head c-title js-fade-up">
+          <span class="c-title__en">Works</span>
+          <span class="c-title__ja">制作実績</span>
+        </div>
+        <p class="c-lead js-fade-up">
+          業種や事業の規模を問わず、お客様の想いに寄り添ったホームページ制作を行っています。
+        </p>
+
+        <a class="works__pickup js-fade-up" href="#" target="_blank" rel="noopener noreferrer">
+          <figure class="works__pickup-image">
+            <img src="assets/images/work_amk.png" alt="A-M-K LLC. 様 コーポレートサイト制作実績" width="750" height="510" loading="lazy">
+          </figure>
+          <div class="works__pickup-content">
+            <span class="works__pickup-badge">PICK UP</span>
+            <h3 class="works__pickup-title">A-M-K LLC. 様</h3>
+            <p class="works__pickup-text">花束・ギフトを扱うブランドのコーポレートサイト。世界観を伝えるシングルページ構成で制作しました。</p>
+            <div class="works__tags">
+              <span class="c-tag">コーポレートサイト</span>
+              <span class="c-tag">シングルページ</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="works__grid">
+          <a class="works__card js-fade-up" href="#" target="_blank" rel="noopener noreferrer">
+            <figure class="works__card-image">
+              <img src="assets/images/work_tumni.png" alt="tumni 様 ブランドサイト制作実績" width="710" height="416" loading="lazy">
+            </figure>
+            <div class="works__card-body">
+              <h3 class="works__card-title">tumni 様</h3>
+              <div class="works__tags">
+                <span class="c-tag">ブランドサイト</span>
+                <span class="c-tag">ペット用品</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 実績が増えるまでの一言。実績を追加したら削除してください -->
+        <p class="works__note js-fade-up">続々と制作実績を追加予定です</p>
+
+        <div class="c-btn-wrap js-fade-up">
+          <a class="c-btn" href="#works">制作実績をもっと見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         LEAD (大見出しステートメント)
+         「ホームページ制作をお考えの方へ」という大テキストで想いを伝える帯
+    ================================================================= -->
+    <section class="lead">
+      <p class="lead__decoration" aria-hidden="true">Web Creative</p>
+      <div class="lead__inner">
+        <h2 class="lead__title js-fade-up">
+          <em>ホームページ制作</em>を<br>お考えの方へ
+        </h2>
+        <div class="lead__body">
+          <p class="lead__text js-fade-up">
+            ホームページを作りたいけれど、何から始めればいいのか分からず、お困りではありませんか。
+          </p>
+          <p class="lead__text js-fade-up">
+            yuno webdesignは、お客様お一人おひとりの想いや事業の魅力をしっかりお伺いし、伝わるデザインでカタチにするホームページ制作を行っています。
+          </p>
+          <p class="lead__text js-fade-up">
+            ゼロからのサイト制作はもちろん、既存サイトのリニューアルや、ちょっとした更新のご相談も承ります。ホームページ制作でお困りの際は、まずはお気軽にご相談ください。
+          </p>
+        </div>
+        <div class="lead__buttons js-fade-up">
+          <a class="c-btn" href="#service">サービス内容を見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         PAGELINK (3アイコンバナー)
+         用途別の導線。リンク先は仮に #contact としているので
+         専用ページを作る場合はhrefを差し替えてください
+    ================================================================= -->
+    <section class="c-section c-section--tight-top">
+      <div class="l-container">
+        <ul class="pagelink">
+          <li class="js-fade-up">
+            <a class="pagelink__item" href="#contact">
+              <img class="pagelink__icon" src="assets/icons/icon-renewal.svg" alt="" width="48" height="48">
+              <span class="pagelink__category">Renewal</span>
+              <span class="pagelink__text">リニューアルを<br>お考えの方へ</span>
+            </a>
+          </li>
+          <li class="js-fade-up">
+            <a class="pagelink__item" href="#contact">
+              <img class="pagelink__icon" src="assets/icons/icon-launch.svg" alt="" width="48" height="48">
+              <span class="pagelink__category">Start</span>
+              <span class="pagelink__text">新しくサイトを<br>立ち上げたい方へ</span>
+            </a>
+          </li>
+          <li class="js-fade-up">
+            <a class="pagelink__item" href="#contact">
+              <img class="pagelink__icon" src="assets/icons/icon-branding.svg" alt="" width="48" height="48">
+              <span class="pagelink__category">Branding</span>
+              <span class="pagelink__text">ブランディングで<br>イメージアップしたい方へ</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         REASONS (選ばれる理由 / About)
+         画像とテキストを交互配置。3ブロック目までは画像を差し替えるだけでOK
+    ================================================================= -->
+    <section class="c-section reasons" id="about">
+      <div class="l-container">
+        <div class="reasons__head c-title js-fade-up">
+          <span class="c-title__en">Reason</span>
+          <span class="c-title__ja">yuno webdesignが選ばれる理由</span>
+        </div>
+        <p class="reasons__point js-fade-up">ヒアリングを大切にした、伴走型のホームページ制作</p>
+
+        <div class="reasons__list">
+          <!-- 理由 01 -->
+          <article class="reasons__item js-fade-up">
+            <figure class="reasons__item-image">
+              <img src="assets/images/reason_hearing.png" alt="ヒアリングのイメージ写真" width="640" height="480" loading="lazy">
+            </figure>
+            <div class="reasons__item-content">
+              <h3 class="reasons__item-title">丁寧なヒアリングから始めるものづくり</h3>
+              <p class="reasons__item-text">
+                何をどう伝えたらいいか分からない、そんな状態からでも大丈夫です。事業への想いや強みをじっくりお伺いしながら、一緒にホームページの方向性を考えていきます。
+              </p>
+              <ul class="c-checklist reasons__item-checklist">
+                <li class="c-checklist__item">何を載せればいいか分からない</li>
+                <li class="c-checklist__item">自分の想いをうまく言葉にできない</li>
+                <li class="c-checklist__item">じっくり相談しながら進めたい</li>
+                <li class="c-checklist__item">初めてのサイト制作で不安</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 理由 02 -->
+          <article class="reasons__item js-fade-up">
+            <figure class="reasons__item-image">
+              <img src="assets/images/reason_quality.png" alt="デスクで作業するイメージ写真" width="640" height="480" loading="lazy">
+            </figure>
+            <div class="reasons__item-content">
+              <h3 class="reasons__item-title">使いやすさとデザイン性を両立</h3>
+              <p class="reasons__item-text">
+                見た目の美しさだけでなく、訪れた人が迷わず情報にたどり着ける構成・導線を設計します。スマートフォンでの見やすさにもこだわった制作を行います。
+              </p>
+              <ul class="c-checklist reasons__item-checklist">
+                <li class="c-checklist__item">スマホでも見やすいサイトにしたい</li>
+                <li class="c-checklist__item">おしゃれで清潔感のあるデザインがいい</li>
+                <li class="c-checklist__item">競合と差別化できるサイトにしたい</li>
+                <li class="c-checklist__item">更新しやすい仕組みにしたい</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 理由 03 -->
+          <article class="reasons__item js-fade-up">
+            <figure class="reasons__item-image">
+              <img src="assets/images/reason_support.png" alt="オフィスでPC作業をするイメージ写真" width="640" height="480" loading="lazy">
+            </figure>
+            <div class="reasons__item-content">
+              <h3 class="reasons__item-title">公開後も安心のサポート体制</h3>
+              <p class="reasons__item-text">
+                サイトは公開してからが本当のスタートです。公開後の更新代行や、サーバー・ドメインに関するご相談など、運用面まで長く伴走してサポートします。
+              </p>
+              <ul class="c-checklist reasons__item-checklist">
+                <li class="c-checklist__item">公開後の更新をお願いしたい</li>
+                <li class="c-checklist__item">サーバーやドメインの管理が不安</li>
+                <li class="c-checklist__item">小さな修正も気軽に相談したい</li>
+                <li class="c-checklist__item">長く付き合える制作者を探している</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         ACTIVITY (その他の活動: SparkAI運営 / 株式会社ReFastパートナー)
+         Web制作以外の活動紹介。ロゴ・実績数値は変更があれば差し替えてください
+    ================================================================= -->
+    <section class="c-section c-section--tight-top" id="activity">
+      <div class="l-container">
+        <div class="activity__card js-fade-up">
+          <div class="activity__head">
+            <img class="activity__logo" src="assets/images/partners/sparkai-icon.png" alt="" width="40" height="40">
+            <p class="activity__wordmark">Spark<span>AI</span></p>
+          </div>
+          <p class="activity__lead">AI SCHOOL / オンラインAIスクール運営</p>
+          <p class="activity__text">
+            Web制作に加えて、AIを活用した業務自動化・AI駆動開発が学べるオンラインスクール「SparkAI」の運営にも携わっています。n8n・DifyなどのノーコードツールやClaude Codeを使い、未経験からでも実務に活かせるAIスキルが身につくカリキュラムを、メンター伴走で提供しています。
+          </p>
+          <div class="activity__stats">
+            <div>
+              <p class="activity__stat-num">300+</p>
+              <p class="activity__stat-label">受講生</p>
+            </div>
+            <div>
+              <p class="activity__stat-num">10+</p>
+              <p class="activity__stat-label">開設コース</p>
+            </div>
+            <div>
+              <p class="activity__stat-num">96%</p>
+              <p class="activity__stat-label">満足度</p>
+            </div>
+          </div>
+          <a class="activity__button" href="https://sparkai.jp/" target="_blank" rel="noopener noreferrer">
+            SparkAIを見る
+            <img src="assets/icons/arrow-right-white.svg" alt="" width="16" height="7">
+          </a>
+
+          <!-- パートナークレジット -->
+          <div class="activity__partner">
+            <span class="activity__partner-label">Partner</span>
+            <a class="activity__partner-link" href="https://refast.co.jp" target="_blank" rel="noopener noreferrer">
+              <img class="activity__partner-logo" src="assets/images/partners/refast-logo.png" alt="株式会社ReFast" width="439" height="137">
+              <span class="activity__partner-name">提供パートナー：株式会社ReFast</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- お問い合わせ誘導バナー（ページ中間の導線） -->
+    <div class="c-section c-section--tight-top">
+      <div class="l-container">
+        <a class="bannerSimple" href="#contact">
+          <img class="bannerSimple__icon" src="assets/icons/icon-mail.svg" alt="">
+          <span>
+            <span class="bannerSimple__en">Contact</span>
+            <span class="bannerSimple__text">ご相談・お見積りはこちら</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ================================================================
+         SERVICE (サービス紹介)
+         帯写真 → 4グリッドのサービス内容 → サブサービスバナー3枚
+         帯写真のパララックスは js/main.js「SERVICE: 帯写真の簡易パララックス」
+    ================================================================= -->
+    <section class="service" id="service">
+      <div class="service__head-image js-parallax">
+        <img class="js-parallax-image" src="assets/images/reason_quality.png" alt="" width="1920" height="600" loading="lazy">
+      </div>
+
+      <div class="service__body c-section c-section--tight-top">
+        <div class="l-container">
+          <div class="c-title js-fade-up">
+            <span class="c-title__en">Service</span>
+            <span class="c-title__ja">サービス紹介</span>
+          </div>
+          <p class="c-lead js-fade-up">
+            ヒアリングから公開後の運用まで、事業のフェーズに合わせてホームページ制作をサポートします。<br class="u-pc-only">
+            個人事業主様から小規模法人様まで、規模に応じて柔軟にご提案いたします。
+          </p>
+
+          <div class="service__grid">
+            <a class="service__box js-fade-up" href="#contact">
+              <img class="service__box-icon" src="assets/icons/icon-service-web.svg" alt="" width="52" height="44">
+              <h3 class="service__box-title">ホームページ制作</h3>
+              <p class="service__box-text">コーポレートサイト・LP・ポートフォリオサイトなど、目的に合わせて一からデザイン・制作します。WordPressでの構築にも対応。</p>
+              <span class="service__box-more">ホームページ制作について</span>
+            </a>
+            <a class="service__box js-fade-up" href="#contact">
+              <img class="service__box-icon" src="assets/icons/icon-service-support.svg" alt="" width="52" height="44">
+              <h3 class="service__box-title">更新・サポート・管理</h3>
+              <p class="service__box-text">公開後の更新代行、ドメイン・サーバー管理、ちょっとした修正のご相談まで幅広くサポートします。</p>
+              <span class="service__box-more">更新・サポート・管理について</span>
+            </a>
+            <a class="service__box js-fade-up" href="#contact">
+              <img class="service__box-icon" src="assets/icons/icon-service-consulting.svg" alt="" width="52" height="44">
+              <h3 class="service__box-title">企画・コンサルティング</h3>
+              <p class="service__box-text">サイト構成の設計やコンテンツ企画、アクセス解析をもとにした改善提案など、成果につながる運用をサポートします。</p>
+              <span class="service__box-more">企画・コンサルティングについて</span>
+            </a>
+            <a class="service__box js-fade-up" href="#contact">
+              <img class="service__box-icon" src="assets/icons/icon-service-graphic.svg" alt="" width="52" height="44">
+              <h3 class="service__box-title">グラフィックデザイン</h3>
+              <p class="service__box-text">名刺・ショップカード・チラシなど、Webと一貫性のある印刷物のデザインもあわせて制作可能です。</p>
+              <span class="service__box-more">グラフィックデザインについて</span>
+            </a>
+          </div>
+
+          <div class="service__banners">
+            <a class="service__banner js-fade-up" href="#contact">
+              <figure class="service__banner-image">
+                <img src="assets/images/service_banner_sns.png" alt="" width="660" height="266" loading="lazy">
+              </figure>
+              <div class="service__banner-content">
+                <h3 class="service__banner-title">SNS運用サポート</h3>
+                <p class="service__banner-text">Instagram・XなどSNS発信のご相談も承ります。投稿デザインのテンプレート作成なども対応可能です。</p>
+              </div>
+            </a>
+            <a class="service__banner js-fade-up" href="#contact">
+              <figure class="service__banner-image">
+                <img src="assets/images/service_banner_analytics.png" alt="" width="660" height="266" loading="lazy">
+              </figure>
+              <div class="service__banner-content">
+                <h3 class="service__banner-title">アクセス解析</h3>
+                <p class="service__banner-text">Googleアナリティクスなどを用いたアクセス状況の確認・改善提案を行います。</p>
+              </div>
+            </a>
+            <a class="service__banner service__banner--wide js-fade-up" href="#contact">
+              <figure class="service__banner-image">
+                <img src="assets/images/service_banner_meeting.png" alt="" width="660" height="266" loading="lazy">
+              </figure>
+              <div class="service__banner-content">
+                <h3 class="service__banner-title">オンライン相談</h3>
+                <p class="service__banner-text">全国どこからでもオンラインでのご相談・打ち合わせが可能です。まずはお気軽にご連絡ください。</p>
+                <span class="c-btn service__banner-btn">オンライン相談について</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         GUIDE (初めての方へ)
+         写真背景＋文字だけのバナー。カードを増やす場合は
+         .guide__grid の grid-template-columns を調整してください
+    ================================================================= -->
+    <section class="c-section guide" id="guide">
+      <div class="l-container">
+        <div class="c-title js-fade-up">
+          <span class="c-title__en">Guide</span>
+          <span class="c-title__ja">初めての方へ</span>
+        </div>
+
+        <div class="guide__grid">
+          <a class="guide__card js-fade-up" href="#contact">
+            <figure class="guide__card-image">
+              <img src="assets/images/guide_consult.png" alt="" width="750" height="560" loading="lazy">
+            </figure>
+            <span class="guide__card-text">ご相談・お問い合わせの流れ</span>
+          </a>
+          <a class="guide__card js-fade-up" href="#contact">
+            <figure class="guide__card-image">
+              <img src="assets/images/guide_faq.png" alt="" width="750" height="560" loading="lazy">
+            </figure>
+            <span class="guide__card-text">よくある質問</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- お問い合わせ誘導バナー（ページ中間の導線・2回目） -->
+    <div class="c-section c-section--tight-top">
+      <div class="l-container">
+        <a class="bannerSimple" href="#contact">
+          <img class="bannerSimple__icon" src="assets/icons/icon-mail.svg" alt="">
+          <span>
+            <span class="bannerSimple__en">Contact</span>
+            <span class="bannerSimple__text">ご相談・お見積りはこちら</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ================================================================
+         NEWS (お知らせ)
+         ※ダミーデータです。実際の更新情報に差し替えてください
+    ================================================================= -->
+    <section class="c-section c-section--alt news">
+      <div class="l-container">
+        <div class="c-title js-fade-up">
+          <span class="c-title__en">News</span>
+          <span class="c-title__ja">お知らせ</span>
+        </div>
+
+        <div class="news__list js-fade-up">
+          <article class="news__item">
+            <a class="news__link" href="#">
+              <time class="news__date" datetime="2026-08-11">2026.08.11</time>
+              <h3 class="news__title">ポートフォリオサイトをリニューアルしました</h3>
+            </a>
+          </article>
+          <article class="news__item">
+            <a class="news__link" href="#">
+              <time class="news__date" datetime="2026-07-01">2026.07.01</time>
+              <h3 class="news__title">ホームページ制作のご依頼受付を再開しました</h3>
+            </a>
+          </article>
+          <article class="news__item">
+            <a class="news__link" href="#">
+              <time class="news__date" datetime="2026-05-20">2026.05.20</time>
+              <h3 class="news__title">制作実績に新しい事例を追加しました</h3>
+            </a>
+          </article>
+        </div>
+
+        <p class="news__more">
+          <a class="c-btn c-btn--sub" href="#">お知らせ一覧を見る</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================
+       FOOTER
+       縦書きキャッチコピー / Contact帯 / フッターナビ / コピーライト
+  ================================================================= -->
+  <footer class="footer" id="contact">
+    <div class="footer__catch">
+      <p class="footer__catch-text">想いを、伝わるカタチに。</p>
+    </div>
+
+    <div class="footer__cta">
+      <div class="l-container">
+        <p class="footer__cta-title">Contact</p>
+        <h2 class="footer__cta-heading">
+          お見積り・ご相談は無料です。<br>
+          お困りのことがあれば、お気軽にご相談ください。
+        </h2>
+        <ul class="footer__cta-list">
+          <li>ホームページ制作</li>
+          <li>リニューアル</li>
+          <li>更新・サポート</li>
+          <li>グラフィックデザイン</li>
+        </ul>
+        <div class="footer__cta-buttons">
+          <a class="c-btn" href="mailto:contact@yuno-webdesign.com">
+            メールでお問い合わせ
+          </a>
+          <a class="footer__cta-mail" href="mailto:contact@yuno-webdesign.com">contact@yuno-webdesign.com</a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="footer__nav">
+      <div class="l-container">
+        <ul class="footer__nav-list">
+          <li>
+            <p class="footer__nav-title"><a class="footer__nav-link" href="#top">HOME</a></p>
+          </li>
+          <li>
+            <p class="footer__nav-title"><a class="footer__nav-link" href="#service">SERVICE</a></p>
+            <ul class="footer__nav-sublist">
+              <li><a class="footer__nav-link" href="#service">ホームページ制作</a></li>
+              <li><a class="footer__nav-link" href="#service">更新・サポート・管理</a></li>
+              <li><a class="footer__nav-link" href="#service">企画・コンサルティング</a></li>
+              <li><a class="footer__nav-link" href="#service">グラフィックデザイン</a></li>
+            </ul>
+          </li>
+          <li>
+            <p class="footer__nav-title"><a class="footer__nav-link" href="#works">WORKS</a></p>
+            <p class="footer__nav-title footer__nav-title--spaced"><a class="footer__nav-link" href="#about">ABOUT</a></p>
+            <p class="footer__nav-title footer__nav-title--spaced"><a class="footer__nav-link" href="#activity">ACTIVITY</a></p>
+          </li>
+          <li>
+            <p class="footer__nav-title"><a class="footer__nav-link" href="#guide">GUIDE</a></p>
+            <ul class="footer__nav-sublist">
+              <li><a class="footer__nav-link" href="#guide">ご相談の流れ</a></li>
+              <li><a class="footer__nav-link" href="#guide">よくある質問</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="l-container footer__bottom">
+      <p class="footer__logo">yuno webdesign</p>
+
+      <!-- SNSリンクは仮のhrefです。実際のアカウントURLに差し替えてください -->
+      <ul class="footer__sns">
+        <li>
+          <a class="footer__sns-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Xをフォロー">
+            <img src="assets/icons/icon-x.svg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="footer__sns-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagramをフォロー">
+            <img src="assets/icons/icon-instagram.svg" alt="">
+          </a>
+        </li>
+      </ul>
+
+      <p class="footer__copyright">&copy; <span id="js-year">2026</span> yuno webdesign</p>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       FIXED BUTTON (追従お問い合わせ + ページトップ)
+       表示切り替え: js/main.js「FIXED BUTTON: 表示切り替え」
+  ================================================================= -->
+  <div class="fixedButton" id="js-fixed-button">
+    <a class="fixedButton__top" href="#top" aria-label="ページトップへ戻る">
+      <img src="assets/icons/icon-arrow-up.svg" alt="">
+    </a>
+    <a class="fixedButton__contact" href="#contact">
+      <img src="assets/icons/icon-mail.svg" alt="">
+      お問い合わせ
+    </a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

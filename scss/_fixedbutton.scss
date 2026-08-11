@@ -1,0 +1,73 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// FIXED BUTTON / 追従お問い合わせボタン + ページトップボタン
+// 対応HTML: index.html 内 <div class="fixedButton">
+// 表示/非表示は js/main.js「FIXED BUTTON: 表示切り替え」で
+// ヒーローを過ぎたら .is-visible を付与する
+// ================================================================
+
+.fixedButton {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: $z-fixed-button;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  @include mq(pc) {
+    right: 28px;
+    bottom: 28px;
+  }
+}
+
+.fixedButton__contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: $color-accent;
+  color: $color-white;
+  font-size: 1.3rem;
+  font-weight: 500;
+  box-shadow: 0 8px 20px rgba($color-text, 0.18);
+
+  img {
+    width: 15px;
+    height: auto;
+  }
+
+  &:hover {
+    background: $color-accent-dark;
+    opacity: 1;
+  }
+}
+
+.fixedButton__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: $color-white;
+  border: 1px solid $color-natural-border;
+  box-shadow: 0 6px 14px rgba($color-text, 0.1);
+
+  img {
+    width: 12px;
+    height: auto;
+  }
+}

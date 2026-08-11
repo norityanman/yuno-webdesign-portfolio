@@ -1,0 +1,56 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// PAGELINK (3アイコンバナー行)
+// 対応HTML: index.html 内 <ul class="pagelink">
+// CUBEの bl_pageLink（「リニューアルをお考えの方へ」等の3分岐導線）に相当
+// ================================================================
+
+.pagelink {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: $color-natural-border;
+  border: 1px solid $color-natural-border;
+
+  @include mq(tab) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pagelink__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 32px 20px;
+  background: $color-white;
+  text-align: center;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: $color-accent-pale;
+    opacity: 1;
+  }
+}
+
+.pagelink__icon {
+  width: 48px;
+  height: 48px;
+}
+
+.pagelink__category {
+  display: block;
+  color: $color-accent;
+  font-family: $font-serif-en;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pagelink__text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.6;
+}

@@ -1,0 +1,227 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// HEADER / ヘッダー（ロゴ・グローバルナビ・ハンバーガーメニュー）
+// 対応HTML: index.html 内 <header class="header">
+// 対応JS  : js/main.js の「HEADER: ハンバーガーメニュー開閉」ブロック
+// ================================================================
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $z-header;
+  width: 100%;
+  background: rgba($color-white, 0.96);
+  border-bottom: 1px solid $color-natural-border;
+  transition: box-shadow 0.3s ease;
+
+  // JSでスクロール検知したときに影を付与（main.js: HEADER SCROLL WATCH）
+  &.is-scrolled {
+    box-shadow: 0 2px 12px rgba($color-text, 0.06);
+  }
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 92%;
+  max-width: $layout-max-width;
+  margin: 0 auto;
+  height: 64px;
+
+  @include mq(pc) {
+    height: 84px;
+  }
+}
+
+// ---- ロゴ ---------------------------------------------------------
+.header__logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.header__logo-link {
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.header__logo-en {
+  color: $color-text;
+  font-family: $font-serif-en;
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  @include mq(pc) {
+    font-size: 2.6rem;
+  }
+
+  span {
+    color: $color-accent;
+  }
+}
+
+.header__logo-sub {
+  margin-top: 2px;
+  color: $color-text-sub;
+  font-family: $font-number;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+// ---- ハンバーガーボタン（SPのみ表示） -------------------------------
+.header__toggle {
+  position: relative;
+  z-index: $z-header + 1;
+  width: 44px;
+  height: 44px;
+  background: $color-text;
+
+  @include mq(pc) {
+    display: none;
+  }
+}
+
+.header__toggle-bar {
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 1.5px;
+  background: $color-white;
+  transform: translateX(-50%);
+  transition: transform 0.35s ease, opacity 0.35s ease, top 0.35s ease;
+
+  &:nth-child(1) {
+    top: 16px;
+  }
+  &:nth-child(2) {
+    top: 22px;
+  }
+  &:nth-child(3) {
+    top: 28px;
+  }
+}
+
+// ハンバーガー開いた状態 → ×アイコンに変形（main.jsで .is-open を body に付与）
+.is-nav-open .header__toggle-bar {
+  &:nth-child(1) {
+    top: 22px;
+    transform: translateX(-50%) rotate(45deg);
+  }
+  &:nth-child(2) {
+    opacity: 0;
+  }
+  &:nth-child(3) {
+    top: 22px;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+}
+
+// ---- グローバルナビ --------------------------------------------------
+.header__nav {
+  @include mq(sp) {
+    position: fixed;
+    inset: 0;
+    z-index: $z-header;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($color-white, 0.98);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+
+    .is-nav-open & {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.header__nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+
+  @include mq(pc) {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+.header__nav-link {
+  position: relative;
+  color: $color-text;
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+
+  @include mq(pc) {
+    font-size: 1.4rem;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1px;
+    background: $color-accent;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+}
+
+// ---- ヘッダー内CTAボタン（お問い合わせ）------------------------------
+.header__cta {
+  display: none;
+
+  @include mq(pc) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: $color-accent;
+    color: $color-white;
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+
+    &:hover {
+      background: $color-accent-dark;
+      opacity: 1;
+    }
+
+    img {
+      width: 15px;
+      height: auto;
+    }
+  }
+}
+
+// SPナビ内に表示するCTA（ナビパネル下部）
+.header__nav-cta {
+  margin-top: 8px;
+
+  @include mq(pc) {
+    display: none;
+  }
+}

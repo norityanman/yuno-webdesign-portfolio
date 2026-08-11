@@ -1,0 +1,200 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// FOOTER / フッター
+// 対応HTML: index.html 内 <footer class="footer">
+// CUBEサイトの「縦書きキャッチコピー」「Contact帯」「フッターナビ」
+// という3段構成を踏襲しています。
+// ================================================================
+
+.footer {
+  background: $color-text;
+  color: $color-white;
+}
+
+// ---- 縦書きキャッチコピー（CUBEの bl_catchcopy 相当） -------------------
+.footer__catch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  overflow: hidden;
+  background: linear-gradient(120deg, #262626, $color-text 60%);
+
+  @include mq(pc) {
+    padding: 70px 0;
+  }
+}
+
+.footer__catch-text {
+  writing-mode: vertical-rl;
+  font-family: $font-mincho;
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: rgba($color-white, 0.92);
+
+  @include mq(pc) {
+    font-size: 2.4rem;
+  }
+}
+
+// ---- Contact帯（CUBEの bl_cta 相当） ---------------------------------
+.footer__cta {
+  padding: 56px 0;
+  text-align: center;
+
+  @include mq(pc) {
+    padding: 80px 0;
+  }
+}
+
+.footer__cta-title {
+  font-family: $font-serif-en;
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-accent-light;
+}
+
+.footer__cta-heading {
+  margin-top: 12px;
+  font-family: $font-mincho;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.7;
+
+  @include mq(pc) {
+    font-size: 2.2rem;
+  }
+}
+
+.footer__cta-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: rgba($color-white, 0.75);
+}
+
+.footer__cta-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+
+  @include mq(tab) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.footer__cta-mail {
+  color: $color-white;
+  font-family: $font-number;
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+// ---- フッターナビ ----------------------------------------------------
+.footer__nav {
+  border-top: 1px solid rgba($color-white, 0.15);
+  padding: 40px 0;
+}
+
+.footer__nav-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 16px;
+  text-align: left;
+
+  @include mq(tab) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer__nav-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+
+  &--spaced {
+    margin-top: 12px;
+  }
+}
+
+.footer__nav-sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.footer__nav-link {
+  color: rgba($color-white, 0.75);
+  font-size: 1.2rem;
+  line-height: 1.6;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+// ---- フッター下部（ロゴ・SNS・コピーライト） ----------------------------
+.footer__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 32px 0 40px;
+  border-top: 1px solid rgba($color-white, 0.15);
+  text-align: center;
+
+  @include mq(tab) {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.footer__logo {
+  font-family: $font-serif-en;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.footer__sns {
+  display: flex;
+  gap: 14px;
+}
+
+.footer__sns-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba($color-white, 0.4);
+  border-radius: 50%;
+
+  img {
+    width: 14px;
+    height: 14px;
+    // 白背景アイコンを反転させて、暗いフッター上でも見えるようにする
+    filter: invert(1);
+  }
+}
+
+.footer__copyright {
+  color: rgba($color-white, 0.55);
+  font-family: $font-serif-en;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}

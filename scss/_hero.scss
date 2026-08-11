@@ -1,0 +1,211 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// HERO (メインビジュアル) / ファーストビュー
+// 対応HTML: index.html 内 <section class="hero" id="top">
+// CUBEサイトの bl_mainVisual を参考に、
+//   ・幾何学シェイプの装飾背景
+//   ・大きな人物写真（切り抜き）
+//   ・英字スクリプトラベル＋和文キャッチコピー
+// という構成要素を踏襲しつつ、CSSのみで再構成しています。
+// ================================================================
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 96px;
+  background: linear-gradient(180deg, $color-accent-pale 0%, $color-white 78%);
+
+  @include mq(pc) {
+    padding-top: 84px; // ヘッダー高さ分
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  @include layout-container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 48px;
+  padding-bottom: 40px;
+
+  @include mq(pc) {
+    flex-direction: row;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+// ---- 左側：テキストブロック ----------------------------------------
+.hero__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  text-align: center;
+
+  @include mq(pc) {
+    width: 52%;
+    text-align: left;
+  }
+}
+
+.hero__label {
+  display: inline-block;
+  color: $color-accent;
+  font-family: $font-script;
+  font-size: 3.4rem;
+  font-weight: 400;
+  line-height: 1;
+  opacity: 0;
+  animation: heroFadeUp 0.9s ease 0.1s forwards;
+
+  @include mq(pc) {
+    font-size: 4.2rem;
+  }
+}
+
+.hero__title {
+  margin-top: 12px;
+  font-family: $font-mincho;
+  font-size: 2.8rem;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: heroFadeUp 0.9s ease 0.25s forwards;
+
+  @include mq(tab) {
+    font-size: 3.4rem;
+  }
+  @include mq(pc) {
+    font-size: 4rem;
+  }
+
+  em {
+    font-style: normal;
+    color: $color-accent;
+  }
+}
+
+.hero__text {
+  margin-top: 24px;
+  font-size: 1.4rem;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  animation: heroFadeUp 0.9s ease 0.4s forwards;
+
+  @include mq(pc) {
+    max-width: 460px;
+  }
+}
+
+.hero__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 32px;
+  opacity: 0;
+  animation: heroFadeUp 0.9s ease 0.55s forwards;
+
+  @include mq(tab) {
+    flex-direction: row;
+    justify-content: center;
+  }
+  @include mq(pc) {
+    justify-content: flex-start;
+  }
+}
+
+// ---- 右側：写真＋装飾シェイプ ---------------------------------------
+.hero__visual {
+  position: relative;
+  width: 78%;
+  max-width: 420px;
+  margin-top: 40px;
+
+  @include mq(pc) {
+    width: 48%;
+    max-width: none;
+    margin-top: 0;
+  }
+}
+
+// 背景の幾何学ブロブ（ミントの塗り面）
+.hero__shape {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 118%;
+  height: 118%;
+  background: $color-accent-light;
+  border-radius: 44% 56% 62% 38% / 46% 40% 60% 54%;
+  transform: translate(-50%, -50%);
+  animation: heroShapePulse 9s ease-in-out infinite;
+  z-index: 1;
+}
+
+// 細い装飾ライン（CUBEの bl_mainVisualShape のライン装飾を簡略化して再現）
+.hero__lines {
+  position: absolute;
+  inset: -6% -6%;
+  z-index: 1;
+  pointer-events: none;
+
+  path {
+    fill: none;
+    stroke: rgba($color-accent, 0.35);
+    stroke-width: 1.4;
+  }
+}
+
+.hero__photo-wrap {
+  position: relative;
+  z-index: 2;
+  animation: floatSoft 6s ease-in-out infinite;
+}
+
+.hero__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 18px 30px rgba($color-text, 0.14));
+}
+
+// ---- スクロールを促す装飾（PCのみ） ----------------------------------
+.hero__scroll {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 3;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  color: $color-text-sub;
+  font-family: $font-number;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+
+  @include mq(pc) {
+    display: inline-flex;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 34px;
+    background: $color-text-sub;
+    animation: floatSoft 2.4s ease-in-out infinite;
+  }
+}

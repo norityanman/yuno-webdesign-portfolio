@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Sass build artifacts (compiled from scss/ via `npm run build`)
+css/*.css.map
+
+# Editor / tool local settings
+.claude/settings.local.json
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

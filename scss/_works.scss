@@ -1,0 +1,144 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// WORKS (制作実績) セクション
+// 対応HTML: index.html 内 <section class="works" id="works">
+// 構成: ピックアップ大カード1点 + グリッドカード（2〜3点）+ もっと見るボタン
+// ================================================================
+
+.works {
+  position: relative;
+}
+
+.works__head {
+  margin-bottom: 40px;
+}
+
+// ---- ピックアップカード（大きめ1点） ---------------------------------
+.works__pickup {
+  display: block;
+  overflow: hidden;
+  background: $color-natural-bg;
+
+  @include mq(tab) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: stretch;
+  }
+}
+
+.works__pickup-image {
+  overflow: hidden;
+
+  @include mq(tab) {
+    width: 55%;
+  }
+
+  img {
+    @include object-fit-cover;
+    transition: transform 0.6s ease;
+  }
+}
+
+.works__pickup:hover .works__pickup-image img {
+  transform: scale(1.06);
+}
+
+.works__pickup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 32px 28px;
+
+  @include mq(tab) {
+    width: 45%;
+    padding: 40px;
+  }
+}
+
+.works__pickup-badge {
+  display: inline-block;
+  width: fit-content;
+  padding: 4px 14px;
+  background: $color-accent;
+  color: $color-white;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+}
+
+.works__pickup-title {
+  font-family: $font-mincho;
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+.works__pickup-text {
+  font-size: 1.4rem;
+  line-height: 1.9;
+  color: $color-text-sub;
+}
+
+// ---- グリッドカード -------------------------------------------------
+// 実績数に応じてカード幅で折り返す（1点だけの時に不自然に伸び切らないよう
+// minmaxで最大幅を制限し、justify-contentで中央寄せにしている）
+.works__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 24px;
+
+  @include mq(tab) {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
+  }
+}
+
+.works__card {
+  display: block;
+  background: $color-white;
+  border: 1px solid $color-natural-border;
+  overflow: hidden;
+}
+
+.works__card-image {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: $color-accent-pale;
+
+  img {
+    @include object-fit-cover;
+    transition: transform 0.6s ease;
+  }
+}
+
+.works__card:hover .works__card-image img {
+  transform: scale(1.06);
+}
+
+.works__card-body {
+  padding: 20px;
+}
+
+.works__card-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+// カテゴリタグの並び
+.works__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+// 実績が増えるまでの一言テキスト（カード化はせず文字のみで表示）
+.works__note {
+  margin-top: 20px;
+  color: $color-text-sub;
+  font-size: 1.3rem;
+  text-align: center;
+  letter-spacing: 0.03em;
+}

@@ -1,0 +1,128 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// REASONS (選ばれる理由 / About) セクション
+// 対応HTML: index.html 内 <section class="reasons" id="about">
+// CUBEの bl_countContent（画像とテキストの交互配置）に相当。
+// 奇数番目は画像が左、偶数番目は画像が右にくるよう .reasons__item:nth-child(even) で反転
+// ================================================================
+
+.reasons__head {
+  margin-bottom: 8px;
+}
+
+.reasons__point {
+  margin-top: 16px;
+  color: $color-accent;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.05em;
+
+  @include mq(pc) {
+    font-size: 2rem;
+  }
+}
+
+.reasons__list {
+  counter-reset: reasons;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-top: 48px;
+
+  @include mq(pc) {
+    gap: 90px;
+    margin-top: 70px;
+  }
+}
+
+.reasons__item {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  counter-increment: reasons;
+
+  @include mq(pc) {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+  }
+
+  // 偶数番目は画像を右側に配置（交互レイアウト）
+  &:nth-child(even) {
+    @include mq(pc) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.reasons__item-image {
+  position: relative;
+  // 通し番号を画像の外(左上)にはみ出させて重ねるため、あえてoverflowは隠さない
+  margin-top: 28px;
+  margin-left: 14px;
+
+  @include mq(pc) {
+    width: 46%;
+    flex-shrink: 0;
+    margin-top: 36px;
+    margin-left: 18px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  // 通し番号（01 / 02 / 03）をCUBE同様に画像の左上に大きく重ねる
+  &::before {
+    content: counter(reasons, decimal-leading-zero);
+    position: absolute;
+    top: -28px;
+    left: -14px;
+    z-index: 1;
+    color: $color-white;
+    -webkit-text-stroke: 1.5px $color-accent;
+    font-family: $font-number;
+    font-size: 5.6rem;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.9;
+    white-space: nowrap;
+
+    @include mq(pc) {
+      top: -36px;
+      left: -18px;
+      font-size: 7.2rem;
+    }
+  }
+}
+
+.reasons__item-content {
+  flex: 1;
+}
+
+.reasons__item-title {
+  font-family: $font-mincho;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.6;
+
+  @include mq(pc) {
+    font-size: 2.2rem;
+  }
+}
+
+.reasons__item-text {
+  margin-top: 16px;
+  font-size: 1.4rem;
+  line-height: 1.9;
+  color: $color-text-sub;
+}
+
+.reasons__item-checklist {
+  margin-top: 20px;
+}

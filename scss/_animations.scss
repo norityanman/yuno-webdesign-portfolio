@@ -1,0 +1,59 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// ANIMATIONS / スクロール演出・キーフレーム
+// js/main.js の IntersectionObserver が要素に .is-inview を
+// 付与するタイミングで、下記のトランジション/キーフレームが発火する。
+// ================================================================
+
+// ---- スクロールで下からフェードイン ------------------------------
+// 使い方: HTMLに class="js-fade-up" を付けるだけ
+.js-fade-up {
+  @include fade-in-up;
+}
+
+// 複数要素を時間差でフェードインさせたい場合（例: カード一覧）
+.js-fade-up-delay-1 {
+  @include fade-in-up(0.1s);
+}
+.js-fade-up-delay-2 {
+  @include fade-in-up(0.2s);
+}
+.js-fade-up-delay-3 {
+  @include fade-in-up(0.3s);
+}
+
+// ---- ヒーローのキャッチコピー用フェード＆スライド ------------------
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ---- ヒーロー背景シェイプのゆっくりとした拡縮 ----------------------
+@keyframes heroShapePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+// ---- ふわっと浮遊させる装飾（写真の縁取り等） ----------------------
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

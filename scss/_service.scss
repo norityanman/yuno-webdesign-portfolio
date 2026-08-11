@@ -1,0 +1,178 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ================================================================
+// SERVICE (サービス紹介) セクション
+// 対応HTML: index.html 内 <section class="service" id="service">
+// 構成: 頭上に帯写真 → 見出し・リード → 4グリッドのサービスボックス
+//       → 3枚のサブサービスバナー（2枚+ワイド1枚）
+// ================================================================
+
+.service {
+  position: relative;
+}
+
+// ---- 頭上の帯写真（CUBEの js_parallaxImage を簡略化。scroll連動はJSで付与） --
+.service__head-image {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+
+  @include mq(pc) {
+    height: 340px;
+  }
+
+  img {
+    @include object-fit-cover;
+    // main.js「SERVICE: 帯写真の簡易パララックス」で scroll に応じて translateY する
+    transition: transform 0.1s linear;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba($color-text, 0.28), rgba($color-text, 0));
+  }
+}
+
+.service__body {
+  padding-top: 48px;
+
+  @include mq(pc) {
+    padding-top: 70px;
+  }
+}
+
+// ---- 4グリッドのサービスボックス ------------------------------------
+.service__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 40px;
+
+  @include mq(tab) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mq(pc) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+.service__box {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px 22px;
+  background: $color-accent-pale;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba($color-text, 0.08);
+    opacity: 1;
+  }
+}
+
+.service__box-icon {
+  width: 52px;
+  height: 44px;
+  margin: 0 auto;
+}
+
+.service__box-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.service__box-text {
+  flex: 1;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: $color-text-sub;
+  text-align: left;
+}
+
+.service__box-more {
+  color: $color-accent;
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  &::after {
+    content: "›";
+    margin-left: 4px;
+  }
+}
+
+// ---- サブサービスバナー（2枚+ワイド1枚） -----------------------------
+.service__banners {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 60px;
+
+  @include mq(tab) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.service__banner {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: $color-white;
+  border: 1px solid $color-natural-border;
+
+  @include mq(tab) {
+    flex-direction: row;
+  }
+
+  // 3枚目はワイド表示（2カラム分を占有）
+  &--wide {
+    @include mq(tab) {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.service__banner-image {
+  overflow: hidden;
+
+  @include mq(tab) {
+    width: 42%;
+    flex-shrink: 0;
+  }
+
+  img {
+    @include object-fit-cover;
+  }
+}
+
+.service__banner-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+}
+
+.service__banner-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.service__banner-text {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: $color-text-sub;
+}
+
+.service__banner-btn {
+  min-width: 0;
+  width: fit-content;
+  margin-top: 4px;
+  padding: 12px 40px 12px 18px;
+  font-size: 1.3rem;
+}
