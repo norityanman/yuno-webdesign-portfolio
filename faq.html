@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>よくある質問 | yuno-webdesign</title>
+  <meta name="description" content="Webサイト制作やデザインに関するよくある質問をまとめたQ&Aページです。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Lora:wght@500&family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@500&family=Shippori+Mincho+B1:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background: #f7f4ee;
+      color: #1f1f1f;
+    }
+
+    .faqPage {
+      padding: 120px 0 80px;
+    }
+
+    .faqPage__header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .faqPage__eyebrow {
+      color: #4caf93;
+      font-family: "Lora", serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .faqPage__title {
+      margin-top: 12px;
+      font-family: "Shippori Mincho B1", serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.4;
+    }
+
+    .faqPage__lead {
+      max-width: 720px;
+      margin: 14px auto 0;
+      color: #5a5a5a;
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .faqList {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .faqItem {
+      border: 1px solid rgba(34, 34, 34, 0.08);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.7);
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(34, 34, 34, 0.03);
+    }
+
+    .faqItem__q {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 24px 26px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      line-height: 1.7;
+      background: linear-gradient(180deg, rgba(76,175,147,0.05), rgba(76,175,147,0.02));
+    }
+
+    .faqItem__q::before {
+      content: "Q";
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #4caf93;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .faqItem__a {
+      display: flex;
+      gap: 14px;
+      padding: 0 26px 24px 26px;
+      color: #4d4d4d;
+      line-height: 1.9;
+      font-size: 1rem;
+    }
+
+    .faqItem__a::before {
+      content: "A";
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #f3efe8;
+      color: #3b3b3b;
+      font-size: 0.9rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .faqPage__cta {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="js-header">
+    <div class="header__inner">
+      <p class="header__logo">
+        <a class="header__logo-link" href="index.html">
+          <span class="header__logo-en"><span>yuno</span>-webdesign</span>
+          <span class="header__logo-sub">Web Design &amp; Branding</span>
+        </a>
+      </p>
+      <nav class="header__nav" id="js-nav">
+        <ul class="header__nav-list">
+          <li><a class="header__nav-link js-nav-link" href="index.html#top">HOME</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#service">SERVICE</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#works">WORKS</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#about">ABOUT</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#activity">ACTIVITY</a></li>
+          <li><a class="header__nav-link js-nav-link" href="guide.html">GUIDE</a></li>
+          <li>
+            <a class="header__cta js-nav-link" href="contact.html">
+              <img src="assets/icons/icon-mail.svg" alt="" width="15" height="12">
+              お問い合わせ
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="faqPage">
+    <div class="l-container">
+      <header class="faqPage__header">
+        <p class="faqPage__eyebrow">FAQ</p>
+        <h1 class="faqPage__title">よくある質問</h1>
+        <p class="faqPage__lead">
+          制作の流れやご相談の進め方、料金や納期について、よくお問い合わせいただく内容を整理してご紹介します。
+        </p>
+      </header>
+
+      <div class="faqList">
+        <div class="faqItem">
+          <div class="faqItem__q">初めてのご依頼でも大丈夫ですか？</div>
+          <div class="faqItem__a">はい、問題ありません。初めてご依頼いただく方にも、必要に応じてヒアリングや方向性の整理をしながら進めております。サイトの目的が明確でなくても、相談しながら形にしていけます。</div>
+        </div>
+
+        <div class="faqItem">
+          <div class="faqItem__q">どのくらいの期間で制作できますか？</div>
+          <div class="faqItem__a">内容の規模やページ数、修正回数によって変わります。通常は、簡単なランディングページで1〜3週間、より複雑なサイトでは数週間〜1か月程度を目安にご相談しています。</div>
+        </div>
+
+        <div class="faqItem">
+          <div class="faqItem__q">既存のサイトをリニューアルできますか？</div>
+          <div class="faqItem__a">もちろんです。既存サイトの課題や改善点を整理し、デザイン・構成・導線の見直しを行いながら、より伝わりやすいサイトへ再構築いたします。</div>
+        </div>
+
+        <div class="faqItem">
+          <div class="faqItem__q">単発のコーポレートサイトだけでなく、ブランディングの相談も可能ですか？</div>
+          <div class="faqItem__a">はい。Webサイトの制作だけでなく、ロゴ、カラー、コピー感、全体のブランドの方向性を含めてご相談いただくことも可能です。見た目だけでなく、伝わり方や認知さえも考えた設計を行います。</div>
+        </div>
+
+        <div class="faqItem">
+          <div class="faqItem__q">料金の目安を知りたいです。</div>
+          <div class="faqItem__a">ご依頼内容や制作範囲によって異なるため、まずはお問い合わせいただき、目的やスケジュール、希望の範囲をお聞かせください。そのうえで適切なご提案をさせていただきます。</div>
+        </div>
+
+        <div class="faqItem">
+          <div class="faqItem__q">修正は何回まで対応できますか？</div>
+          <div class="faqItem__a">制作の方向性が定まった後の修正は、必要に応じて柔軟に対応いたします。ただし、要望が大きく変わる場合は追加費用や対応範囲の見直しが発生する場合があります。</div>
+        </div>
+
+        <div class="faqItem">
+          <div class="faqItem__q">お問い合わせはどのように進めればよいですか？</div>
+          <div class="faqItem__a">お問い合わせフォームからご連絡いただければ、まずは簡単なヒアリングを行い、その後、必要に応じて方向性や見積もりをご案内します。ご相談内容が曖昧でも大丈夫ですので、まずはお気軽にご連絡ください。</div>
+        </div>
+      </div>
+
+      <div class="faqPage__cta">
+        <a class="c-btn" href="contact.html">お問い合わせはこちら</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="l-container footer__bottom">
+      <p class="footer__logo">yuno-webdesign</p>
+      <p class="footer__copyright">&copy; <span id="js-year">2026</span> yuno-webdesign</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ご相談の流れ | yuno-webdesign</title>
+  <meta name="description" content="ご相談の流れをYES/NOチャートでわかりやすくご案内します。yuno-webdesignのお問い合わせ方法をご紹介します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Lora:wght@500&family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@500&family=Shippori+Mincho+B1:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background: #f7f4ee;
+      color: #222;
+    }
+
+    .guidePage {
+      padding: 120px 0 80px;
+    }
+
+    .guidePage__header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .guidePage__eyebrow {
+      color: #4caf93;
+      font-family: "Lora", serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .guidePage__title {
+      margin-top: 12px;
+      font-family: "Shippori Mincho B1", serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.4;
+    }
+
+    .guidePage__lead {
+      max-width: 760px;
+      margin: 12px auto 0;
+      color: #555;
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .flowChart {
+      position: relative;
+      max-width: 1100px;
+      margin: 48px auto 0;
+      padding: 28px 18px 18px;
+      border: 1px solid rgba(34, 34, 34, 0.08);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 16px 40px rgba(34, 34, 34, 0.04);
+    }
+
+    .flowChart__line {
+      position: absolute;
+      left: 50%;
+      top: 80px;
+      bottom: 110px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(76,175,147,0.2), rgba(76,175,147,0.6), rgba(76,175,147,0.2));
+      transform: translateX(-50%);
+    }
+
+    .flowChart__step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 140px 1fr;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .flowChart__step:last-child {
+      margin-bottom: 0;
+    }
+
+    .flowChart__box {
+      padding: 22px 20px;
+      border: 1px solid rgba(34, 34, 34, 0.08);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 10px 24px rgba(34, 34, 34, 0.03);
+    }
+
+    .flowChart__box--left {
+      grid-column: 1;
+    }
+
+    .flowChart__box--right {
+      grid-column: 3;
+    }
+
+    .flowChart__box--center {
+      grid-column: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #4caf93;
+      color: #fff;
+      border-color: #4caf93;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      min-height: 80px;
+      box-shadow: 0 10px 20px rgba(76,175,147,0.2);
+    }
+
+    .flowChart__step-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .flowChart__step-text {
+      color: #5a5a5a;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .flowChart__decision {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin: 12px auto 20px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: rgba(76,175,147,0.08);
+      color: #2f6e5d;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .flowChart__decision strong {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 6px 12px rgba(34,34,34,0.07);
+    }
+
+    .guidePage__cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 36px;
+    }
+
+    @media screen and (max-width: 48em) {
+      .flowChart__line {
+        display: none;
+      }
+
+      .flowChart__step {
+        grid-template-columns: 1fr;
+      }
+
+      .flowChart__box--left,
+      .flowChart__box--right,
+      .flowChart__box--center {
+        grid-column: 1;
+      }
+
+      .flowChart__box--center {
+        min-height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="js-header">
+    <div class="header__inner">
+      <p class="header__logo">
+        <a class="header__logo-link" href="index.html">
+          <span class="header__logo-en"><span>yuno</span>-webdesign</span>
+          <span class="header__logo-sub">Web Design &amp; Branding</span>
+        </a>
+      </p>
+      <nav class="header__nav" id="js-nav">
+        <ul class="header__nav-list">
+          <li><a class="header__nav-link js-nav-link" href="index.html#top">HOME</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#service">SERVICE</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#works">WORKS</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#about">ABOUT</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#activity">ACTIVITY</a></li>
+          <li><a class="header__nav-link js-nav-link" href="guide.html">GUIDE</a></li>
+          <li>
+            <a class="header__cta js-nav-link" href="contact.html">
+              <img src="assets/icons/icon-mail.svg" alt="" width="15" height="12">
+              お問い合わせ
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="guidePage">
+    <div class="l-container">
+      <header class="guidePage__header">
+        <p class="guidePage__eyebrow">Guide</p>
+        <h1 class="guidePage__title">ご相談の流れ</h1>
+        <p class="guidePage__lead">
+          初めてのご依頼でも安心して進められるよう、簡単な質問とご相談の方向性をわかりやすくご案内しています。
+        </p>
+      </header>
+
+      <div class="flowChart">
+        <div class="flowChart__line" aria-hidden="true"></div>
+
+        <div class="flowChart__step">
+          <div class="flowChart__box flowChart__box--left">
+            <div class="flowChart__step-title">STEP 01</div>
+            <p class="flowChart__step-text">まずはお問い合わせフォームから、あなたのご希望や現状の悩みをお知らせください。</p>
+          </div>
+          <div class="flowChart__box flowChart__box--center">start</div>
+          <div class="flowChart__box flowChart__box--right">
+            <div class="flowChart__step-title">相談内容の整理</div>
+            <p class="flowChart__step-text">サイトの目的、公開予定時期、既存の課題があれば、ここでまとめてご相談いただけます。</p>
+          </div>
+        </div>
+
+        <div class="flowChart__decision"><strong>YES</strong> すぐにご相談を進める</div>
+
+        <div class="flowChart__step">
+          <div class="flowChart__box flowChart__box--left">
+            <div class="flowChart__step-title">STEP 02</div>
+            <p class="flowChart__step-text">必要に応じて、方向性やサイトの構成、予算感を一緒に整理しながらご提案します。</p>
+          </div>
+          <div class="flowChart__box flowChart__box--center">check</div>
+          <div class="flowChart__box flowChart__box--right">
+            <div class="flowChart__step-title">適切な方向性の確認</div>
+            <p class="flowChart__step-text">「イメージと違う」「もっと簡潔にしたい」など、ミーティングで方向性を固めていきます。</p>
+          </div>
+        </div>
+
+        <div class="flowChart__decision"><strong>NO</strong> まずは小さく話を聞く</div>
+
+        <div class="flowChart__step">
+          <div class="flowChart__box flowChart__box--left">
+            <div class="flowChart__step-title">STEP 03</div>
+            <p class="flowChart__step-text">ご希望が固まったら、デザイン・構成・文章の方向性に沿って制作を進めていきます。</p>
+          </div>
+          <div class="flowChart__box flowChart__box--center">build</div>
+          <div class="flowChart__box flowChart__box--right">
+            <div class="flowChart__step-title">制作・修正</div>
+            <p class="flowChart__step-text">必要な修正や調整を行いながら、最終的な公開に向けて仕上げていきます。</p>
+          </div>
+        </div>
+
+        <div class="guidePage__cta">
+          <a class="c-btn" href="contact.html">お問い合わせはこちら</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="l-container footer__bottom">
+      <p class="footer__logo">yuno-webdesign</p>
+      <p class="footer__copyright">&copy; <span id="js-year">2026</span> yuno-webdesign</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

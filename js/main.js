@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFixedButton();
   initScrollReveal();
   initServiceParallax();
+  initContactForm();
   initFooterYear();
 });
 
@@ -138,6 +139,46 @@ function initServiceParallax() {
   update();
   window.addEventListener("scroll", update, { passive: true });
   window.addEventListener("resize", update);
+}
+
+/* ----------------------------------------------------------------
+ * CONTACT FORM: フォーム送信時にメールクライアントを開く
+ * 画面遷移なしでフォームを送るため、mailto: を使って
+ * 件名・本文を自動入力した状態で問い合わせメールへ遷移させる。
+ * ---------------------------------------------------------------- */
+function initContactForm() {
+  const form = document.getElementById("js-contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const name = (formData.get("name") || "").toString().trim();
+    const email = (formData.get("email") || "").toString().trim();
+    const company = (formData.get("company") || "").toString().trim();
+    const category = (formData.get("category") || "").toString().trim();
+    const message = (formData.get("message") || "").toString().trim();
+
+    if (!name || !email || !message) {
+      form.reportValidity();
+      return;
+    }
+
+    const subject = encodeURIComponent(`お問い合わせ: ${company || category || "新規相談"}`);
+    const body = [
+      `お名前: ${name}`,
+      `メールアドレス: ${email}`,
+      `会社名・事業名: ${company || "未記入"}`,
+      `お問い合わせ内容: ${category || "未記入"}`,
+      "",
+      "ご相談内容:",
+      message
+    ].join("\n");
+
+    window.location.href = `mailto:contact@yuno-webdesign.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    form.reset();
+  });
 }
 
 /* ----------------------------------------------------------------

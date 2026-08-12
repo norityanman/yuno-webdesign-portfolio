@@ -54,29 +54,53 @@
 }
 
 .header__logo-en {
+  display: inline-flex;
+  align-items: end;
+  gap: 0.08em;
   color: $color-text;
   font-family: $font-serif-en;
-  font-size: 2.2rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 0.9;
+  text-transform: lowercase;
+  filter: drop-shadow(0 2px 4px rgba($color-text, 0.04));
 
   @include mq(pc) {
-    font-size: 2.6rem;
+    font-size: 2.2rem;
+    letter-spacing: 0.08em;
   }
 
   span {
+    position: relative;
+    display: inline-block;
     color: $color-accent;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding-bottom: 0.08em;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.12em;
+      height: 1.5px;
+      background: linear-gradient(90deg, rgba($color-accent, 0.0), rgba($color-accent, 0.66), rgba($color-accent, 0.0));
+      border-radius: 999px;
+    }
   }
 }
 
 .header__logo-sub {
-  margin-top: 2px;
-  color: $color-text-sub;
+  margin-top: 5px;
+  color: rgba($color-text-sub, 0.88);
   font-family: $font-number;
-  font-size: 0.9rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+  opacity: 0.85;
 }
 
 // ---- ハンバーガーボタン（SPのみ表示） -------------------------------

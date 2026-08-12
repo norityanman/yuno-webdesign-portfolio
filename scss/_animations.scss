@@ -10,7 +10,14 @@
 // ---- スクロールで下からフェードイン ------------------------------
 // 使い方: HTMLに class="js-fade-up" を付けるだけ
 .js-fade-up {
-  @include fade-in-up;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.js-fade-up.is-inview {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 // 複数要素を時間差でフェードインさせたい場合（例: カード一覧）

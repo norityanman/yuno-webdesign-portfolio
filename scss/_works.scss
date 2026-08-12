@@ -16,15 +16,34 @@
 }
 
 // ---- ピックアップカード（大きめ1点） ---------------------------------
+.works__list {
+  display: grid;
+  gap: 40px;
+
+  @include mq(tab) {
+    gap: 48px;
+  }
+
+  @include mq(pc) {
+    gap: 56px;
+  }
+}
+
 .works__pickup {
   display: block;
   overflow: hidden;
   background: $color-natural-bg;
+  margin-bottom: 0;
 
-  @include mq(tab) {
+  @media screen and (min-width: 48em) {
     display: flex;
     flex-direction: row-reverse;
     align-items: stretch;
+    margin-bottom: 0.5rem;
+  }
+
+  @include mq(pc) {
+    min-height: 360px;
   }
 }
 

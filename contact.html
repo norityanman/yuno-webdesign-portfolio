@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>お問い合わせ | yuno-webdesign</title>
+  <meta name="description" content="お見積り・ご相談は無料です。yuno-webdesignへお問い合わせください。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Lora:wght@500&family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@500&family=Shippori+Mincho+B1:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contactPage {
+      background: #1f1f1f;
+      color: #fff;
+    }
+
+    .contactPage .l-container {
+      max-width: 1020px;
+    }
+
+    .contactPage__panel {
+      padding: 28px 22px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.015);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .contactPage .footer__cta {
+      padding-top: 122px;
+      padding-bottom: 44px;
+      text-align: center;
+    }
+
+    .contactPage .footer__cta-title {
+      font-size: 1.2rem;
+      letter-spacing: 0.22em;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .contactPage .footer__cta-heading {
+      max-width: 860px;
+      margin: 18px auto 0;
+      font-size: clamp(2rem, 2.8vw, 3.2rem);
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .contactPage .footer__cta-list {
+      margin-top: 18px;
+      gap: 8px 18px;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .contactPage__meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 28px;
+      max-width: 860px;
+      margin: 18px auto 0;
+      padding: 8px 4px 0;
+      text-align: left;
+    }
+
+    .contactPage__meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 62px;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .contactPage__meta-label {
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contactPage__meta-value {
+      color: #fff;
+      font-size: 1.06rem;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .contactPage .footer__cta-form-wrap {
+      max-width: 860px;
+      margin: 26px auto 0;
+      padding: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .contactPage .contactForm {
+      gap: 16px;
+      padding: 20px 18px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .contactPage .contactForm__grid {
+      gap: 16px;
+    }
+
+    .contactPage .contactForm__field {
+      gap: 8px;
+    }
+
+    .contactPage .contactForm__label {
+      font-size: 1.08rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .contactPage .contactForm__input {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      color: #fff;
+      font-size: 1.08rem;
+    }
+
+    .contactPage .contactForm__textarea {
+      min-height: 160px;
+    }
+
+    .contactPage .contactForm__actions {
+      margin-top: 8px;
+    }
+
+    .contactPage .contactForm__submit {
+      min-width: 200px;
+      border-radius: 14px;
+      box-shadow: 0 10px 18px rgba(76, 175, 147, 0.24);
+    }
+
+    @media screen and (max-width: 48em) {
+      .contactPage .footer__cta {
+        padding-top: 88px;
+      }
+
+      .contactPage__panel {
+        padding: 22px 14px 12px;
+      }
+
+      .contactPage__meta {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="js-header">
+    <div class="header__inner">
+      <p class="header__logo">
+        <a class="header__logo-link" href="index.html">
+          <span class="header__logo-en"><span>yuno</span>-webdesign</span>
+          <span class="header__logo-sub">Web Design &amp; Branding</span>
+        </a>
+      </p>
+
+      <button class="header__toggle" type="button" id="js-nav-toggle" aria-expanded="false" aria-controls="js-nav">
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+        <span class="u-sr-only">メニューを開閉する</span>
+      </button>
+
+      <nav class="header__nav" id="js-nav">
+        <ul class="header__nav-list">
+          <li><a class="header__nav-link js-nav-link" href="index.html#top">HOME</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#service">SERVICE</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#works">WORKS</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#about">ABOUT</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#activity">ACTIVITY</a></li>
+          <li><a class="header__nav-link js-nav-link" href="index.html#guide">GUIDE</a></li>
+          <li>
+            <a class="header__cta js-nav-link" href="contact.html">
+              <img src="assets/icons/icon-mail.svg" alt="" width="15" height="12">
+              お問い合わせ
+            </a>
+          </li>
+        </ul>
+        <p class="header__nav-cta">
+          <a class="c-btn js-nav-link" href="contact.html">お問い合わせ</a>
+        </p>
+      </nav>
+    </div>
+  </header>
+
+  <main class="l-main">
+    <section class="contactPage" aria-labelledby="contact-title">
+      <div class="l-container">
+        <div class="contactPage__panel">
+          <div class="footer__cta">
+            <p class="footer__cta-title">Contact</p>
+            <h1 class="footer__cta-heading" id="contact-title">
+              お見積り・ご相談は無料です。<br>
+              お困りのことがあれば、お気軽にご相談ください。
+            </h1>
+            <ul class="footer__cta-list">
+              <li>ホームページ制作</li>
+              <li>リニューアル</li>
+              <li>更新・サポート</li>
+              <li>グラフィックデザイン</li>
+            </ul>
+
+            <div class="contactPage__meta" aria-label="お問い合わせ情報">
+              <div class="contactPage__meta-item">
+                <span class="contactPage__meta-label">Name</span>
+                <span class="contactPage__meta-value">山田 太郎</span>
+              </div>
+              <div class="contactPage__meta-item">
+                <span class="contactPage__meta-label">Email</span>
+                <span class="contactPage__meta-value">name@example.com</span>
+              </div>
+              <div class="contactPage__meta-item">
+                <span class="contactPage__meta-label">Company</span>
+                <span class="contactPage__meta-value">株式会社○○</span>
+              </div>
+              <div class="contactPage__meta-item">
+                <span class="contactPage__meta-label">Inquiry</span>
+                <span class="contactPage__meta-value">ホームページ制作</span>
+              </div>
+            </div>
+
+            <div class="footer__cta-form-wrap">
+              <form class="contactForm" id="js-contact-form" novalidate>
+                <div class="contactForm__grid">
+                  <label class="contactForm__field">
+                    <span class="contactForm__label">お名前</span>
+                    <input class="contactForm__input" type="text" name="name" placeholder="例：山田 太郎" required>
+                  </label>
+                  <label class="contactForm__field">
+                    <span class="contactForm__label">メールアドレス</span>
+                    <input class="contactForm__input" type="email" name="email" placeholder="例：name@example.com" required>
+                  </label>
+                </div>
+
+                <div class="contactForm__grid">
+                  <label class="contactForm__field">
+                    <span class="contactForm__label">会社名・事業名</span>
+                    <input class="contactForm__input" type="text" name="company" placeholder="例：株式会社○○">
+                  </label>
+                  <label class="contactForm__field">
+                    <span class="contactForm__label">お問い合わせ内容</span>
+                    <select class="contactForm__input" name="category">
+                      <option value="ホームページ制作">ホームページ制作</option>
+                      <option value="リニューアル">リニューアル</option>
+                      <option value="更新・サポート">更新・サポート</option>
+                      <option value="グラフィックデザイン">グラフィックデザイン</option>
+                      <option value="その他">その他</option>
+                    </select>
+                  </label>
+                </div>
+
+                <label class="contactForm__field contactForm__field--full">
+                  <span class="contactForm__label">ご相談内容</span>
+                  <textarea class="contactForm__input contactForm__textarea" name="message" rows="6" placeholder="ご相談内容をご記入ください" required></textarea>
+                </label>
+
+                <div class="contactForm__actions">
+                  <button class="c-btn contactForm__submit" type="submit">送信する</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <nav class="footer__nav">
+      <div class="l-container">
+        <ul class="footer__nav-list">
+          <li>
+            <p class="footer__nav-title"><a class="footer__nav-link" href="index.html#top">HOME</a></p>
+          </li>
+          <li>
+            <p class="footer__nav-title"><a class="footer__nav-link" href="index.html#service">SERVICE</a></p>
+            <ul class="footer__nav-sublist">
+              <li><a class="footer__nav-link" href="index.html#service">ホームページ制作</a></li>
+              <li><a class="footer__nav-link" href="index.html#service">更新・サポート・管理</a></li>
+              <li><a class="footer__nav-link" href="index.html#service">企画・コンサルティング</a></li>
+              <li><a class="footer__nav-link" href="index.html#service">グラフィックデザイン</a></li>
+            </ul>
+          </li>
+          <li>
+            <p class="footer__nav-title"><a class="footer__nav-link" href="index.html#works">WORKS</a></p>
+            <p class="footer__nav-title footer__nav-title--spaced"><a class="footer__nav-link" href="index.html#about">ABOUT</a></p>
+            <p class="footer__nav-title footer__nav-title--spaced"><a class="footer__nav-link" href="index.html#activity">ACTIVITY</a></p>
+          </li>
+          <li>
+            <p class="footer__nav-title"><a class="footer__nav-link" href="index.html#guide">GUIDE</a></p>
+            <ul class="footer__nav-sublist">
+              <li><a class="footer__nav-link" href="index.html#guide">ご相談の流れ</a></li>
+              <li><a class="footer__nav-link" href="index.html#guide">よくある質問</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="l-container footer__bottom">
+      <p class="footer__logo">yuno-webdesign</p>
+      <ul class="footer__sns">
+        <li>
+          <a class="footer__sns-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Xをフォロー">
+            <img src="assets/icons/icon-x.svg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="footer__sns-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagramをフォロー">
+            <img src="assets/icons/icon-instagram.svg" alt="">
+          </a>
+        </li>
+      </ul>
+      <p class="footer__copyright">&copy; <span id="js-year">2026</span> yuno-webdesign</p>
+    </div>
+  </footer>
+
+  <div class="fixedButton" id="js-fixed-button">
+    <a class="fixedButton__top" href="index.html#top" aria-label="ページトップへ戻る">
+      <img src="assets/icons/icon-arrow-up.svg" alt="">
+    </a>
+    <a class="fixedButton__contact" href="contact.html">
+      <img src="assets/icons/icon-mail.svg" alt="">
+      お問い合わせ
+    </a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
