@@ -155,6 +155,33 @@
   min-width: 180px;
 }
 
+.contactForm__status {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  max-width: min(420px, calc(100vw - 32px));
+  margin: 0;
+  padding: 14px 18px;
+  border: 1px solid rgba($color-accent-light, 0.55);
+  border-radius: 12px;
+  background: #202522;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  color: $color-accent-light;
+  font-size: 1.3rem;
+  text-align: center;
+
+  &.is-error {
+    border-color: rgba(#ffb4ab, 0.65);
+    color: #ffb4ab;
+  }
+
+  @media screen and (max-width: 48em) {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
 // ---- フッターナビ ----------------------------------------------------
 .footer__nav {
   border-top: 1px solid rgba($color-white, 0.15);

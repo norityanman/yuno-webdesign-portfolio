@@ -536,7 +536,10 @@
           <li>グラフィックデザイン</li>
         </ul>
         <div class="footer__cta-form-wrap">
-          <form class="contactForm" id="js-contact-form" novalidate>
+          <form class="contactForm" id="js-contact-form" action="https://formsubmit.co/contact@yuno-webdesign.com" method="POST">
+            <input type="hidden" name="_subject" value="yuno-webdesignへのお問い合わせ">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
             <div class="contactForm__grid">
               <label class="contactForm__field">
                 <span class="contactForm__label">お名前</span>
@@ -573,6 +576,7 @@
             <div class="contactForm__actions">
               <button class="c-btn contactForm__submit" type="submit">送信する</button>
             </div>
+            <p class="contactForm__status" role="status" aria-live="polite" hidden></p>
           </form>
         </div>
       </div>

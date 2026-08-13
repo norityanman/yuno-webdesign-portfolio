@@ -142,43 +142,55 @@ function initServiceParallax() {
 }
 
 /* ----------------------------------------------------------------
- * CONTACT FORM: フォーム送信時にメールクライアントを開く
- * 画面遷移なしでフォームを送るため、mailto: を使って
- * 件名・本文を自動入力した状態で問い合わせメールへ遷移させる。
+ * CONTACT FORM: 非同期送信と結果表示
+ * FormSubmitの応答を確認して、成功・失敗をフォーム下へ表示する。
  * ---------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById("js-contact-form");
   if (!form) return;
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const formData = new FormData(form);
-    const name = (formData.get("name") || "").toString().trim();
-    const email = (formData.get("email") || "").toString().trim();
-    const company = (formData.get("company") || "").toString().trim();
-    const category = (formData.get("category") || "").toString().trim();
-    const message = (formData.get("message") || "").toString().trim();
-
-    if (!name || !email || !message) {
+    if (!form.checkValidity()) {
       form.reportValidity();
+      showContactStatus(form, "入力内容をご確認ください。送信されていません。", true);
       return;
     }
 
-    const subject = encodeURIComponent(`お問い合わせ: ${company || category || "新規相談"}`);
-    const body = [
-      `お名前: ${name}`,
-      `メールアドレス: ${email}`,
-      `会社名・事業名: ${company || "未記入"}`,
-      `お問い合わせ内容: ${category || "未記入"}`,
-      "",
-      "ご相談内容:",
-      message
-    ].join("\n");
+    const submitButton = form.querySelector(".contactForm__submit");
+    if (!submitButton) return;
 
-    window.location.href = `mailto:contact@yuno-webdesign.com?subject=${subject}&body=${encodeURIComponent(body)}`;
-    form.reset();
+    submitButton.disabled = true;
+    submitButton.textContent = "送信中...";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+
+      if (!response.ok) throw new Error(`送信エラー: ${response.status}`);
+
+      form.reset();
+      showContactStatus(form, "送信されました。お問い合わせありがとうございました。", false);
+    } catch (error) {
+      showContactStatus(form, "送信できませんでした。時間をおいて、もう一度お試しください。", true);
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "送信する";
+    }
   });
+}
+
+function showContactStatus(form, message, isError) {
+  const status = form.querySelector(".contactForm__status");
+  if (!status) return;
+
+  status.hidden = false;
+  status.textContent = message;
+  status.classList.toggle("is-error", isError);
 }
 
 /* ----------------------------------------------------------------
