@@ -165,13 +165,20 @@ function initContactForm() {
     submitButton.textContent = "送信中...";
 
     try {
+      const formData = Object.fromEntries(new FormData(form));
       const response = await fetch(form.action, {
         method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
+        body: JSON.stringify(formData),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
       });
 
-      if (!response.ok) throw new Error(`送信エラー: ${response.status}`);
+      const result = await response.json().catch(() => null);
+      if (!response.ok || result?.success === false) {
+        throw new Error(result?.message || `送信エラー: ${response.status}`);
+      }
 
       form.reset();
       showContactStatus(form, "送信されました。お問い合わせありがとうございました。", false);
