@@ -244,9 +244,18 @@
 }
 
 .footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: $font-serif-en;
   font-size: 1.8rem;
   font-weight: 500;
+}
+
+.footer__logo-mark {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .footer__sns {

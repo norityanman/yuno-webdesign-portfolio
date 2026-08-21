@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 130" role="img" aria-label="yuno-webdesign ロゴ（横組み・白反転）">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&amp;family=Roboto:wght@500&amp;display=swap');
+      .word-yuno { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 42px; fill: #6fd0b4; letter-spacing: 0.02em; }
+      .word-rest { font-family: 'Lora', Georgia, serif; font-weight: 600; font-size: 42px; fill: #ffffff; letter-spacing: 0.01em; }
+      .word-sub  { font-family: 'Roboto', Arial, sans-serif; font-weight: 500; font-size: 13px; fill: #cfcfcf; letter-spacing: 0.22em; }
+    </style>
+  </defs>
+
+  <g transform="translate(12,15)">
+    <polygon points="50,6 94,50 50,94 6,50" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M 32,25 C 38,32 44,39 49,46 A 14 14 0 1 1 63,60 L 63,25"
+          fill="none" stroke="#6fd0b4" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(132,0)">
+    <text x="0" y="70" class="word-yuno">yuno</text>
+    <text x="92" y="70" class="word-rest">-webdesign</text>
+    <rect x="0" y="76" width="88" height="2" fill="#6fd0b4" opacity="0.8"/>
+    <text x="1" y="100" class="word-sub">WEB DESIGN &amp; BRANDING</text>
+  </g>
+</svg>

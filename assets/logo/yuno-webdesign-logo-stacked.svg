@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 400" role="img" aria-label="yuno-webdesign ロゴ（縦組み）">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&amp;family=Roboto:wght@500&amp;display=swap');
+      .word  { font-family: 'Lora', Georgia, serif; font-size: 34px; }
+      .word-sub  { font-family: 'Roboto', Arial, sans-serif; font-weight: 500; font-size: 12px; fill: #666666; letter-spacing: 0.22em; }
+    </style>
+  </defs>
+
+  <g transform="translate(90,30) scale(2)">
+    <polygon points="50,6 94,50 50,94 6,50" fill="none" stroke="#333333" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M 32,25 C 38,32 44,39 49,46 A 14 14 0 1 1 63,60 L 63,25"
+          fill="none" stroke="#4caf93" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text x="190" y="300" text-anchor="middle" class="word"><tspan fill="#4caf93" font-weight="700">yuno</tspan><tspan fill="#333333" font-weight="600">-webdesign</tspan></text>
+  <rect x="160" y="310" width="60" height="2" fill="#4caf93" opacity="0.8"/>
+  <text x="190" y="336" text-anchor="middle" class="word-sub">WEB DESIGN &amp; BRANDING</text>
+</svg>
