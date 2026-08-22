@@ -143,7 +143,7 @@ function initServiceParallax() {
 
 /* ----------------------------------------------------------------
  * CONTACT FORM: 非同期送信と結果表示
- * FormSubmitの応答を確認して、成功・失敗をフォーム下へ表示する。
+ * Xserver上のPHP endpointの応答を確認して、成功・失敗をフォーム下へ表示する。
  * ---------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById("js-contact-form");
@@ -165,14 +165,11 @@ function initContactForm() {
     submitButton.textContent = "送信中...";
 
     try {
-      const formData = Object.fromEntries(new FormData(form));
+      const formData = new FormData(form);
       const response = await fetch(form.action, {
         method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        }
+        body: formData,
+        headers: { Accept: "application/json" }
       });
 
       const result = await response.json().catch(() => null);

@@ -536,10 +536,7 @@
           <li>グラフィックデザイン</li>
         </ul>
         <div class="footer__cta-form-wrap">
-          <form class="contactForm" id="js-contact-form" action="https://formsubmit.co/ajax/contact@yuno-webdesign.com" method="POST">
-            <input type="hidden" name="_subject" value="yuno-webdesignへのお問い合わせ">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
+          <form class="contactForm" id="js-contact-form" action="send-contact.php" method="POST">
             <div class="contactForm__grid">
               <label class="contactForm__field">
                 <span class="contactForm__label">お名前</span>
@@ -547,7 +544,7 @@
               </label>
               <label class="contactForm__field">
                 <span class="contactForm__label">メールアドレス</span>
-                <input class="contactForm__input" type="email" name="email" placeholder="例：name@example.com" required>
+                  <input class="contactForm__input" type="email" name="_replyto" placeholder="例：name@example.com" required>
               </label>
             </div>
 
